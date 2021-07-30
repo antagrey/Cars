@@ -6,5 +6,6 @@ namespace Cars.Api.Settings
     {
         public ConnectionStringSettings ConnectionStringSettings { get; set; }
         public EntityFrameworkSettings EntityFrameworkSettings { get; set; }
+        public CarUrlSettings CarUrlSettings { get; set; }
     }
 }

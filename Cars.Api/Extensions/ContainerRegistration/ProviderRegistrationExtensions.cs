@@ -9,6 +9,7 @@ namespace Cars.Api.Extensions.ContainerRegistration
         public static Container RegisterProviders(this Container container, ApplicationSettings applicationSettings)
         {
             container.RegisterSingleton<IConnectionStringsProvider>(() => applicationSettings.ConnectionStringSettings);
+            container.RegisterSingleton<IUrlsProvider>(() => applicationSettings.CarUrlSettings);
 
             return container;
         }
