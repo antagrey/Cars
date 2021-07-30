@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Cars.Application.Command.Results;
 using Cars.Domain;
 using Cars.Domain.Contracts;
 using Cars.Infrastructure.Command;
@@ -6,7 +7,7 @@ using Cars.Infrastructure.EntityFramework.Repository;
 
 namespace Cars.Application.Command.Handlers
 {
-    public class RemoveCarCommandHandler : IAsyncOneWayCommandHandler<RemoveCarCommand>
+    public class RemoveCarCommandHandler : IAsyncCommandHandler<RemoveCarCommand, CarRemovedResult>
     {
         private readonly IRepository<Car> carRepository;
 
@@ -15,18 +16,20 @@ namespace Cars.Application.Command.Handlers
             this.carRepository = carRepository;
         }
 
+        public CarRemovedResult Result { get; private set; }
+
         public async Task HandleAsync(RemoveCarCommand command)
         {
             var car = await carRepository.FindByIdAsync(command.CarId);
 
-            if (car == null)
+            if (car != null)
             {
-                return;
+                carRepository.Remove(car);
+
+                await carRepository.SaveChangesAsync(); ;
             }
 
-            carRepository.Remove(car);
-
-            await carRepository.SaveChangesAsync();
+            Result = new CarRemovedResult(car != null);
         }
     }
 }

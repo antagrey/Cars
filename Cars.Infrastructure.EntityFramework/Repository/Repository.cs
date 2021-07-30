@@ -9,6 +9,11 @@ namespace Cars.Infrastructure.EntityFramework.Repository
     {
         private readonly CarsDatabaseContext dbContext;
 
+        public Repository(CarsDatabaseContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
         public void Add(TAggregateRoot aggregateRoot)
         {
             dbContext.Set<TAggregateRoot>().Add(aggregateRoot);

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc.Core" Version="5.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cars.Application.Command\Cars.Application.Command.csproj" />
+    <ProjectReference Include="..\Cars.Application.Query\Cars.Application.Query.csproj" />
+    <ProjectReference Include="..\Cars.Application\Cars.Application.csproj" />
+  </ItemGroup>
+
+</Project>

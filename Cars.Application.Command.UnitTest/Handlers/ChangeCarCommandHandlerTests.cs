@@ -6,7 +6,6 @@ using Cars.Domain.Contracts;
 using Cars.Infrastructure.EntityFramework.Repository;
 using Moq;
 using Xunit;
-using static Cars.Application.Command.Constants.CommandConstants;
 
 namespace Cars.Application.Command.UnitTest.Handlers
 {
@@ -40,6 +39,8 @@ namespace Cars.Application.Command.UnitTest.Handlers
             await sut.HandleAsync(command);
 
             // Assert
+            Assert.NotNull(sut.Result);
+            Assert.True(sut.Result.CarFound);
             Assert.Equal(command.Make, car.Make);
             Assert.Equal(command.Model, car.Model);
             Assert.Equal(command.Colour, car.Colour);
@@ -50,7 +51,7 @@ namespace Cars.Application.Command.UnitTest.Handlers
         }
 
         [Fact]
-        public async Task HandleAsync_WhenCarCannotBeFound_ShouldThrow()
+        public async Task HandleAsync_WhenCarCannotBeFound_ShouldReturnCarNotFound()
         {
             // Arrange
             var command = fixture.Create<ChangeCarCommand>();
@@ -60,14 +61,12 @@ namespace Cars.Application.Command.UnitTest.Handlers
                 .Setup(x => x.FindByIdAsync(command.CarId))
                 .ReturnsAsync(car);
 
-            var expectedException = string.Format(AggregateCouldNotBeFound, nameof(Car), command.CarId);
-
             // Act
-            var ex = await Record.ExceptionAsync(() => sut.HandleAsync(command));
+            await sut.HandleAsync(command);
 
             // Assert
-            Assert.NotNull(ex);
-            Assert.Equal(expectedException, ex.Message);
+            Assert.NotNull(sut.Result);
+            Assert.False(sut.Result.CarFound);
 
             carRepository.Verify(x => x.SaveChangesAsync(), Times.Never);
         }
