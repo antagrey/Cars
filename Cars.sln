@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Api", "Cars.Api\Cars.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Api.UnitTests", "Cars.Api.UnitTests\Cars.Api.UnitTests.csproj", "{E74E106F-9395-4937-B93A-C7BD56FE41E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Acl.DataMuse", "Cars.Acl.DataMuse\Cars.Acl.DataMuse.csproj", "{8ED17CF6-C4D9-40E8-9FF9-165AF93FFD92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Acl.DataMuse", "Cars.Acl.DataMuse\Cars.Acl.DataMuse.csproj", "{8ED17CF6-C4D9-40E8-9FF9-165AF93FFD92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Acl.DataMuse.UnitTest", "Cars.Acl.DataMuse.UnitTest\Cars.Acl.DataMuse.UnitTest.csproj", "{5F0FD3FF-0B38-4B8B-B759-ABB7C1CFBA73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,10 @@ Global
 		{8ED17CF6-C4D9-40E8-9FF9-165AF93FFD92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ED17CF6-C4D9-40E8-9FF9-165AF93FFD92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ED17CF6-C4D9-40E8-9FF9-165AF93FFD92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F0FD3FF-0B38-4B8B-B759-ABB7C1CFBA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F0FD3FF-0B38-4B8B-B759-ABB7C1CFBA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F0FD3FF-0B38-4B8B-B759-ABB7C1CFBA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F0FD3FF-0B38-4B8B-B759-ABB7C1CFBA73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +107,7 @@ Global
 		{C03787CA-F84D-44CB-AB46-8CBE91718499} = {91259A25-6EF2-41D8-8A4E-52AA0EBBAF02}
 		{5DE55FD4-9B6A-4A90-B6C5-E89D95506275} = {91259A25-6EF2-41D8-8A4E-52AA0EBBAF02}
 		{E74E106F-9395-4937-B93A-C7BD56FE41E9} = {91259A25-6EF2-41D8-8A4E-52AA0EBBAF02}
+		{5F0FD3FF-0B38-4B8B-B759-ABB7C1CFBA73} = {91259A25-6EF2-41D8-8A4E-52AA0EBBAF02}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ED9A7731-786B-4FEA-A655-92B89B560119}
