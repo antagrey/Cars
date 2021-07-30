@@ -10,9 +10,11 @@ namespace Cars.Api.Extensions
         {
             return container
                 .RegisterFactories()
+                .RegisterAdapters()
                 .RegisterProviders(applicationSettings)
                 .RegisterQueryHandlers()
                 .RegisterCommandHandlers()
+                .RegisterAclHandlers()
                 .RegisterEntityFramework(applicationSettings);
         }
     }

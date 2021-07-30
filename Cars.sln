@@ -15,21 +15,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{91259A25-6
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Application.Query.UnitTest", "Cars.Application.Query.UnitTest\Cars.Application.Query.UnitTest.csproj", "{D2E8C920-65DF-4E2C-B465-359278E27A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Infrastructure.EntityFramework", "Cars.Infrastructure.EntityFramework\Cars.Infrastructure.EntityFramework.csproj", "{61EA26BD-D792-48E2-BCF9-E6AE0F38C05A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Infrastructure.EntityFramework", "Cars.Infrastructure.EntityFramework\Cars.Infrastructure.EntityFramework.csproj", "{61EA26BD-D792-48E2-BCF9-E6AE0F38C05A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Domain", "Cars.Domain\Cars.Domain.csproj", "{44080FF2-D80D-47E8-94F8-509C8E9F7AD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Domain", "Cars.Domain\Cars.Domain.csproj", "{44080FF2-D80D-47E8-94F8-509C8E9F7AD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Domain.Contracts", "Cars.Domain.Contracts\Cars.Domain.Contracts.csproj", "{4E14A105-B811-407E-A27F-9D2F217FF3B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Domain.Contracts", "Cars.Domain.Contracts\Cars.Domain.Contracts.csproj", "{4E14A105-B811-407E-A27F-9D2F217FF3B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Domain.UnitTests", "Cars.Domain.UnitTests\Cars.Domain.UnitTests.csproj", "{C03787CA-F84D-44CB-AB46-8CBE91718499}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Domain.UnitTests", "Cars.Domain.UnitTests\Cars.Domain.UnitTests.csproj", "{C03787CA-F84D-44CB-AB46-8CBE91718499}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Application.Command", "Cars.Application.Command\Cars.Application.Command.csproj", "{1458356F-64F0-4096-ADC0-CCD76B23003B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Application.Command", "Cars.Application.Command\Cars.Application.Command.csproj", "{1458356F-64F0-4096-ADC0-CCD76B23003B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Application.Command.UnitTest", "Cars.Application.Command.UnitTest\Cars.Application.Command.UnitTest.csproj", "{5DE55FD4-9B6A-4A90-B6C5-E89D95506275}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Application.Command.UnitTest", "Cars.Application.Command.UnitTest\Cars.Application.Command.UnitTest.csproj", "{5DE55FD4-9B6A-4A90-B6C5-E89D95506275}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Api", "Cars.Api\Cars.Api.csproj", "{1BB2E462-CF1C-40D8-AC5C-7841380C63C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Api", "Cars.Api\Cars.Api.csproj", "{1BB2E462-CF1C-40D8-AC5C-7841380C63C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Api.UnitTests", "Cars.Api.UnitTests\Cars.Api.UnitTests.csproj", "{E74E106F-9395-4937-B93A-C7BD56FE41E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Api.UnitTests", "Cars.Api.UnitTests\Cars.Api.UnitTests.csproj", "{E74E106F-9395-4937-B93A-C7BD56FE41E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Acl.DataMuse", "Cars.Acl.DataMuse\Cars.Acl.DataMuse.csproj", "{8ED17CF6-C4D9-40E8-9FF9-165AF93FFD92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,10 @@ Global
 		{E74E106F-9395-4937-B93A-C7BD56FE41E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E74E106F-9395-4937-B93A-C7BD56FE41E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E74E106F-9395-4937-B93A-C7BD56FE41E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ED17CF6-C4D9-40E8-9FF9-165AF93FFD92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ED17CF6-C4D9-40E8-9FF9-165AF93FFD92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ED17CF6-C4D9-40E8-9FF9-165AF93FFD92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ED17CF6-C4D9-40E8-9FF9-165AF93FFD92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

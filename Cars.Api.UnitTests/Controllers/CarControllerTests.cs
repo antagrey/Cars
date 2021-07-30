@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
 using AutoFixture;
+using Cars.Acl.DataMuse.Queries;
+using Cars.Acl.DataMuse.Results;
 using Cars.Api.Controllers;
 using Cars.Api.Requests;
 using Cars.Api.Responses;
@@ -24,8 +26,9 @@ namespace Cars.Api.UnitTests.Controllers
         private readonly Mock<IAsyncCommandHandler<AddCarCommand, CarAddedResult>> addCarCommandHandler;
         private readonly Mock<IAsyncCommandHandler<RemoveCarCommand, CarRemovedResult>> removeCarCommandHandler;
         private readonly Mock<IAsyncCommandHandler<ChangeCarCommand, CarChangedResult>> changeCarCommandHandler;
+        private readonly Mock<IAsyncQueryHandler<WordsSoundingLikeRequest, SoundsLikeWordResults>> getWordsSoundingLikeHandler;
 
-        private readonly CarController sut;
+            private readonly CarController sut;
 
         public CarControllerTests()
         {
@@ -35,13 +38,15 @@ namespace Cars.Api.UnitTests.Controllers
             addCarCommandHandler = new Mock<IAsyncCommandHandler<AddCarCommand, CarAddedResult>>();
             removeCarCommandHandler = new Mock<IAsyncCommandHandler<RemoveCarCommand, CarRemovedResult>>();
             changeCarCommandHandler = new Mock<IAsyncCommandHandler<ChangeCarCommand, CarChangedResult>>();
+            getWordsSoundingLikeHandler = new Mock<IAsyncQueryHandler<WordsSoundingLikeRequest, SoundsLikeWordResults>>();
 
             sut = new CarController(
                 logger.Object,
                 getCarByIdQueryHandler.Object,
                 addCarCommandHandler.Object,
                 removeCarCommandHandler.Object,
-                changeCarCommandHandler.Object);
+                changeCarCommandHandler.Object,
+                getWordsSoundingLikeHandler.Object);
         }
 
         [Fact]
@@ -52,6 +57,9 @@ namespace Cars.Api.UnitTests.Controllers
             var carResult = fixture.Create<CarResult>();
             getCarByIdQueryHandler.Setup(c => c.HandleAsync(It.Is<GetCarByIdQuery>(q => q.CarId == carId)))
                 .ReturnsAsync(carResult);
+            var wordsResult = fixture.Create<SoundsLikeWordResults>();
+            getWordsSoundingLikeHandler.Setup(c => c.HandleAsync(It.Is<WordsSoundingLikeRequest>(q => q.Word == carResult.Model)))
+                .ReturnsAsync(wordsResult);
 
             // Act
             var result = await sut.Get(carId) as OkObjectResult;
@@ -65,6 +73,7 @@ namespace Cars.Api.UnitTests.Controllers
             Assert.Equal(carResult.Model, response.Model);
             Assert.Equal(carResult.Colour, response.Colour);
             Assert.Equal(carResult.Year, response.Year);
+            Assert.Same(wordsResult.Words, response.WordsThatSoundLikeModel);
         }
 
         [Fact]

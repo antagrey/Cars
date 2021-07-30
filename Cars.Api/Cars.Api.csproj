@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cars.Acl.DataMuse\Cars.Acl.DataMuse.csproj" />
     <ProjectReference Include="..\Cars.Application.Command\Cars.Application.Command.csproj" />
     <ProjectReference Include="..\Cars.Application.Query\Cars.Application.Query.csproj" />
     <ProjectReference Include="..\Cars.Application\Cars.Application.csproj" />

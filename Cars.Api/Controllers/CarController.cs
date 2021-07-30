@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Cars.Acl.DataMuse.Queries;
+using Cars.Acl.DataMuse.Results;
 using Cars.Api.Requests;
 using Cars.Api.Responses;
 using Cars.Application.Command.Results;
@@ -20,6 +22,7 @@ namespace Cars.Api.Controllers
         private readonly IAsyncCommandHandler<AddCarCommand, CarAddedResult> addCarCommandHandler;
         private readonly IAsyncCommandHandler<RemoveCarCommand, CarRemovedResult> removeCarCommandHandler;
         private readonly IAsyncCommandHandler<ChangeCarCommand, CarChangedResult> changeCarCommandHandler;
+        private readonly IAsyncQueryHandler<WordsSoundingLikeRequest, SoundsLikeWordResults> getWordsSoundingLikeHandler;
 
         private readonly ILogger<CarController> _logger;
 
@@ -28,13 +31,15 @@ namespace Cars.Api.Controllers
             IAsyncQueryHandler<GetCarByIdQuery, CarResult> getCarByIdQueryHandler,
             IAsyncCommandHandler<AddCarCommand, CarAddedResult> addCarCommandHandler,
             IAsyncCommandHandler<RemoveCarCommand, CarRemovedResult> removeCarCommandHandler,
-            IAsyncCommandHandler<ChangeCarCommand, CarChangedResult> changeCarCommandHandler)
+            IAsyncCommandHandler<ChangeCarCommand, CarChangedResult> changeCarCommandHandler,
+            IAsyncQueryHandler<WordsSoundingLikeRequest, SoundsLikeWordResults> getWordsSoundingLikeHandler)
         {
             _logger = logger;
             this.getCarByIdQueryHandler = getCarByIdQueryHandler;
             this.addCarCommandHandler = addCarCommandHandler;
             this.removeCarCommandHandler = removeCarCommandHandler;
             this.changeCarCommandHandler = changeCarCommandHandler;
+            this.getWordsSoundingLikeHandler = getWordsSoundingLikeHandler;
         }
 
         [HttpGet]
@@ -53,7 +58,9 @@ namespace Cars.Api.Controllers
                 return NotFound();
             }
 
-            var response = new GetCarResponse(result);
+            var soundsLikeResult = await getWordsSoundingLikeHandler.HandleAsync(new WordsSoundingLikeRequest(result.Model));
+
+            var response = new GetCarResponse(result, soundsLikeResult);
 
             return Ok(response);
         }
